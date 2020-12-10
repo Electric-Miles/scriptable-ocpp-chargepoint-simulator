@@ -31,6 +31,7 @@ import {
   StopTransactionResponse,
   TriggerMessagePayload,
   UpdateFirmwarePayload,
+  ClearChargingProfilePayload
 } from './ocpp1_6';
 import {CertManagement, Csr} from "./cert-management";
 import {KeyStore} from "./keystore";
@@ -408,6 +409,15 @@ export class ChargepointOcpp16Json {
     log.debug(LOG_NAME, this.config.cpName, 'answerExtendedTriggerMessage');
     this.registeredCallbacksExtendedTriggerMessage.set(requestedMessage, cb);
     this.buildExtendedTriggerMessage();
+  }
+
+  /**
+   * @param cb
+   * @param options
+   */
+  answerClearChargingProfile<T>(cb: (request: OcppRequest<ClearChargingProfilePayload>) => void, options?: AnswerOptions<T>): void {
+    log.debug(LOG_NAME, this.config.cpName, 'ClearChargingProfile');
+    this.registeredCallbacks.set("ClearChargingProfile", {cb, options});
   }
 
   /**
