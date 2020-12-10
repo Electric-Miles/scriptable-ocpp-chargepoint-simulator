@@ -4,6 +4,11 @@ export enum MessageType {
   CALLERROR = 4
 }
 
+export enum ClearChargingProfileStatus {
+  ACCEPTED = 'Accepted',
+  UNKNOWN = 'Unknown'
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface Payload {
 
@@ -110,7 +115,6 @@ export interface MeterValuesPayload extends Payload {
   transactionId?: number,
   meterValue: Array<TransactionData>
 }
-
 
 export interface GetDiagnosticsPayload extends Payload {
   location: string,
@@ -244,5 +248,16 @@ export interface DataTransferPayload {
 }
 
 export interface RemoteStartTransactionResponse {
+  status: string
+}
+
+export interface ClearChargingProfilePayload extends Payload {
+  id?: number,
+  connectorId?: number,
+  chargingProfilePurpose?: string,
+  stackLevel?: number
+}
+
+export interface ClearChargingProfileResponse {
   status: string
 }
