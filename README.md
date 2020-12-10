@@ -235,12 +235,12 @@ cp.answerCertificateSigned( async (request) => {
 * ExtendedTriggerMessage (1.6 security)
 * SignCertificate (1.6 security)
 * CertificateSigned (1.6 security)
+* Clear Charging Profile
 
 ### Not supported (yet)
 
 * Cancel Reservation
 * Clear Cache
-* Clear Charging Profile
 * Data Transfer
 * Get Composite Schedule
 * Get Local List Version
@@ -272,3 +272,8 @@ index ec53fdc..e0323a8 100644
        this.ws = new WebSocket(this.url, "ocpp1.6", options);
        let promiseResolved = false;
 ```
+
+# Publishing
+1. Bump version number in ```package.json```
+2. Run ```npm tsc```
+3. Run ```npm publish```
